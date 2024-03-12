@@ -9,11 +9,11 @@ int bs(int ele,int a[],int n,int ans)
         if(a[mid]>=ele)
         {
             ans=max(ans,n-mid);
-            high=mid-1;
+            low=mid+1;
         }
         else
         {
-            low=mid+1;
+            high=mid-1;
         }
     }
     return ans;
