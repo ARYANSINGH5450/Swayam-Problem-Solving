@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int equalSubstring(string s, string t, int maxCost) {
+        int n=s.size();
+        int l=0,h=0,ans=INT_MIN,cost=0;
+        while(h<n)
+        {
+            cost+=abs(s[h]-t[h]);
+            while(cost>maxCost)
+            {
+                cost-=abs(s[l]-t[l]);
+                l++;
+            }
+            ans=max(ans,h-l+1);
+            h++;
+        }
+        return ans;
+    }
+};
