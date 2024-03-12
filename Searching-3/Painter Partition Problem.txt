@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+int countPainters(int a[],int time) 
+{
+int n=a.size();
+int painters=1;
+tpainter=0;
+for (int i=0;i<n;i++) 
+{
+    if (tpainter+a[i]<=time) 
+    {
+        tpainter+=a[i];
+    }
+    else 
+    {
+        painters++;
+        tpainter=a[i];
+    }
+}
+return painters;
+}
+int main()
+{
+    int n,k,a[100];
+    cin>>n>>k;
+    for(int i=0;i<n;i++)
+    {
+         cin>>a[i];
+    }
+    int low=*max_element(a,a+n);
+    int high=accumulate(a,a+n,0);
+    while(low<=high) 
+    {
+        int mid=(low+high)/2;
+        int painters=countPainters(a,mid);
+        if (painters>k) 
+        {
+            low=mid+1;
+        }
+        else 
+        {
+            high=mid-1;
+        }
+    }
+    cout<<low;
+    return 0;
+}
