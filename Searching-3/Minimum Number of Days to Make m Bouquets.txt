@@ -1,0 +1,48 @@
+class Solution {
+public:
+    bool check(int d,vector<int>a,int n,int m,int k)
+    {
+        int f=0,bouq=0;
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]<=d)
+            {
+                f++;
+            }
+            else
+            {
+                bouq+=f/k;
+                f=0;
+            }
+        }
+        bouq+=f/k;
+        if(bouq>=m)
+        {
+            return true;
+        }
+        return false;
+    }
+    int minDays(vector<int>& bloomDay, int m, int k) {
+        int n=bloomDay.size();
+        if((long)m*k>n)
+        {
+            return -1;
+        }
+        int low=*min_element(bloomDay.begin(),bloomDay.end());
+        int high=*max_element(bloomDay.begin(),bloomDay.end());
+        int ans=INT_MAX;
+        while(low<=high)
+        {
+            int mid=(low+high)/2;
+            if(check(mid,bloomDay,n,m,k))
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        return low;
+    }
+};
