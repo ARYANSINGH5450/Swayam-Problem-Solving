@@ -8,7 +8,7 @@ public:
         int l=1,h=x,ans;
        while(l<=h)
        {
-           long long int mid=l+(h-l)/2;
+           long long int mid=(l+h)/2;
            if(mid*mid<=x)
            {
                ans=mid;
