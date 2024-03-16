@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool check(int a[],int s,int n,int m)
+{
+    int sum,l=0,h=m-1;
+    while(h<n)
+    {
+        sum=0;
+        for(int i=l;i<=h;i++)
+        {
+            sum+=a[i];
+        }
+        if(sum>s)
+        {
+            return false;
+        }
+        l++;
+        h++;
+    }
+    return true;
+}
+int main()
+{
+    int n,a[100],s,ans=INT_MIN;
+    cin>>n>>s;
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int low=1,high=n;
+    while(low<=high)
+    {
+        int mid=(low+high)/2;
+        if(check(a,s,n,mid))
+        {
+            ans=max(ans,mid);
+            low=mid+1;
+        }
+        else
+        {
+            high=mid-1;
+        }
+    }
+    cout<<ans;
+    return 0;
+}

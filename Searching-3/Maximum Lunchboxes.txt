@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool check(int a,int n,int b[],int lb,int arr[])
+{
+  int cnt=0;
+  for(int i=0;i<n;i++)
+  {
+    cnt+=(arr[i]/lb);
+    if(cnt>=a)
+    {
+      return true;
+    }
+  }
+  return false;
+}
+int main()
+{
+  int a,n;
+  int ans=-1;
+  cin>>a>>n;
+  int b[100];
+  for(int i=0;i<n;i++)
+  {
+    cin>>b[i];
+  }
+  map<int,int>m;
+  for(int i=0;i<n;i++)
+  {
+    m[b[i]]++;
+  }
+  int arr[100];
+  int j=0,c=0;
+  for(int i=0;i<m.size();i++)
+  {
+    if(m[i]>0)
+    {
+      arr[j++]=m[i];
+      c++;
+    }
+  }
+  int low=0,high=*max_element(arr,arr+c);
+  while(low<=high)
+  {
+    int mid=(low+high)/2;
+    if(check(a,n,b,mid,arr))
+    {
+      ans=max(ans,mid);
+      low=mid+1;
+    }
+    else
+    {
+      high=mid-1;
+    }
+  }
+  cout<<ans;
+  return 0;
+}

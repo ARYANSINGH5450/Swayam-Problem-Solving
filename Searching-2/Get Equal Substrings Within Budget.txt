@@ -1,0 +1,45 @@
+class Solution {
+public:
+    bool check(string s,string t,int n,int len,int m)
+    {
+        int l=0,h=len-1;
+        int cost=0;
+        while(h<n)
+        {
+            for(int i=l;i<=h;i++)
+            {
+                cost+=abs(s[i]-t[i]);
+            }
+            if(cost>m)
+            {
+                cost=0;
+                l++;
+                h++;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    int equalSubstring(string s, string t, int maxCost) {
+        int n=s.size();
+        int ans=INT_MIN;
+        int low=0,high=s.size();
+        while(low<=high)
+        {
+            int mid=(low+high)/2;
+            if(check(s,t,n,mid,maxCost))
+            {
+                ans=max(ans,mid);
+                low=mid+1;
+            }
+            else
+            {
+                high=mid-1;
+            }
+        }
+        return ans;
+    }
+};
