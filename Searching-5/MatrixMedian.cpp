@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-int count(vector<int>row,int mid)
+int count(vector<int>v,int mid)
 {
-  int l=0,h=row.size()-1;
+  int l=0,h=v.size()-1;
   while (l<=h)
   {
     int m=(l+h)/2;
-    if (row[m] <= mid)
+    if (v[m] <= mid)
     {
       l=m+1;
     }
