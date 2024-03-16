@@ -58,7 +58,7 @@ int main()
       low=mid+1;
     }
   }
-  cout<<ans;
+  int ans1=ans;
   if((n1+n2)%2==0){
   int low=min(min1,min2);
   int high=max(max1,max2);
@@ -70,7 +70,7 @@ int main()
     {
       low=mid+1;
     }
-    else if(c>(n1+n2)/2)
+    else if(c>((n1+n2)/2)-1)
     {
       high=mid-1;
     }
@@ -80,7 +80,11 @@ int main()
       low=mid+1;
     }
   }
-  cout<<ans;
+  int ans2=ans;
+  cout<<ans2<<" "<<ans1;
+  }
+  else{
+  cout<<ans1;
   }
   return 0;
 }
