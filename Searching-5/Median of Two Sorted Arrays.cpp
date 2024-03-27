@@ -58,6 +58,33 @@ int main()
       low=mid+1;
     }
   }
-  cout<<low;
+  int ans1=ans;
+  if((n1+n2)%2==0){
+  int low=min(min1,min2);
+  int high=max(max1,max2);
+  while(low<=high)
+  {
+    int mid=(low+high)/2;
+    int c=count(a,mid,n1)+count(b,mid,n2);
+    if(c<((n1+n2)/2)-1)
+    {
+      low=mid+1;
+    }
+    else if(c>((n1+n2)/2)-1)
+    {
+      high=mid-1;
+    }
+    else
+    {
+      ans=mid;
+      low=mid+1;
+    }
+  }
+  int ans2=ans;
+  cout<<ans2<<" "<<ans1;
+  }
+  else{
+  cout<<ans1;
+  }
   return 0;
 }
