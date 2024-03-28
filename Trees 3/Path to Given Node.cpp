@@ -31,15 +31,15 @@ bool path(Node* root,vector<int>&v,int n)
 }
 int main()
 {
-  struct Node* root=new Node(1);
-  root->left=new Node(2);
-  root->right=new Node(3);
-  root->left->left=new Node(4);
-  root->left->right=new Node(5);
-  root->right->left=new Node(6);
-  root->right->right=new Node(7);
+  struct Node* root=new Node(10);
+  root->left=new Node(11);
+  root->right=new Node(12);
+  root->left->left=new Node(13);
+  root->left->right=new Node(14);
+  root->right->left=new Node(15);
+  root->right->right=new Node(16);
   vector<int>v;
-  if(path(root,v,6))
+  if(path(root,v,15))
   {
      for (auto i:v) 
      {
