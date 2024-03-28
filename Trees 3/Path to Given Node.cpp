@@ -2,26 +2,27 @@
 using namespace std;
 struct Node{
   int val;
-  struct Node* left;
-  struct Node*right;
-  Node(int data){
-     Node->val=data;
-     Node->left=nullptr;
-     Node->right=nullptr;
+  Node* left;
+  Node*right;
+  Node(int data)
+  {
+      val=data;
+      left=nullptr;
+      right=nullptr;
   }
 };
-bool path(Node* root,vector<int>&v,int x) 
+bool path(Node* root,vector<int>&v,int n) 
 {
   if (root==NULL)
   {
     return false;
   }
-  v.push_back(root->data);
-  if (root->val==x)
+  v.push_back(root->val);
+  if (root->val==n)
   {
     return true;
   }
-  if(path(root->left,v,x)||path(root->right,v,x))
+  if(path(root->left,v,n)||path(root->right,v,n))
   {
     return true;  
   }
@@ -30,18 +31,20 @@ bool path(Node* root,vector<int>&v,int x)
 }
 int main()
 {
-  struct Node * root=new Node(1);
+  struct Node* root=new Node(1);
   root->left=new Node(2);
-  root->right=new Node(3)
+  root->right=new Node(3);
   root->left->left=new Node(4);
   root->left->right=new Node(5);
   root->right->left=new Node(6);
   root->right->right=new Node(7);
   vector<int>v;
-  bool res=path(root,v,6);
-  for (auto i:v) 
+  if(path(root,v,6))
   {
-    cout<<i<<" ";
+     for (auto i:v) 
+     {
+        cout<<i<<" ";
+     }
   }
   return 0;
 }
