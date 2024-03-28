@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void solve(TreeNode* root,int target,int sum ,vector<vector<int>>&ans,vector<int>&path)
+    void f(TreeNode* root,int target,int sum ,vector<vector<int>>&ans,vector<int>&path)
     {
         if(root==NULL)
         {
@@ -19,8 +19,8 @@ public:
         }
         path.push_back(root->val);
         sum+=root->val;
-        solve(root->left,target,sum,ans,path);
-        solve(root->right,target,sum,ans,path);
+        f(root->left,target,sum,ans,path);
+        f(root->right,target,sum,ans,path);
         path.pop_back();
         sum-=root->val;
     }
@@ -28,7 +28,7 @@ public:
         vector<vector<int>>ans;
         vector<int>v;
         int sum=0;
-        solve(root,targetSum,sum,ans,v);
+        f(root,targetSum,sum,ans,v);
         return ans;
     }
 };
