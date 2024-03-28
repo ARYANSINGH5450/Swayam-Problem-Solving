@@ -1,11 +1,34 @@
 class Solution {
-public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p==NULL && q==NULL) return true;
-        else if(p==NULL) return false;
-        else if(q==NULL) return false;
-        if(p->val == q->val)
-            return isSameTree(p->left, q->left)&&isSameTree(p->right, q->right);
-        return false;
+  public:
+    vector<int>bottomView(Node *root) {
+        if(root == NULL)
+        {
+            return {}; 
+        }
+        map<int,int>m; 
+        vector<int>ans;
+        queue<pair<Node*,int>>q; 
+        q.push({root, 0}); 
+        while(!q.empty()) 
+        {
+            auto i=q.front(); 
+            q.pop(); 
+            Node* n=i.first; 
+            int l=i.second; 
+            m[l]=n->data; 
+            if(n->left!=NULL) 
+            {
+                q.push({n->left,l-1}); 
+            }
+            if(n->right!=NULL)
+            {
+                q.push({n->right,l+1}); 
+            }  
+        }
+        for(auto i:m) 
+        {
+            ans.push_back(i.second); 
+        }
+        return ans;  
     }
 };
