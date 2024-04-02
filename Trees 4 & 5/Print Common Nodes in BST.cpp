@@ -26,8 +26,8 @@ void print(TreeNode* root)
 }
 int main()
 {
-  set<int>s;
-  f(s,root);
-  print(s,root);
+    
+  f(A);
+  print(B);
   return 0;
 }
