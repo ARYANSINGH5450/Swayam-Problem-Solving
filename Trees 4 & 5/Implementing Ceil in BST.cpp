@@ -17,3 +17,4 @@ int findCeil(Node* root, int input) {
     }
     }
 return ans;
+}
