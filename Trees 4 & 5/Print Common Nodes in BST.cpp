@@ -1,6 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
 set<int>s;
+struct node{
+    int val;
+    node* left;
+    node* right;
+    node(int data)
+    {
+        val=data;
+        left=nullptr;
+        right=nullptr;
+    }
+};
 void f(TreeNode* root)
 {
     if(root==NULL)
