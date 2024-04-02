@@ -12,7 +12,7 @@ struct node{
         right=nullptr;
     }
 };
-void f(TreeNode* root)
+void f(node* root)
 {
     if(root==NULL)
     {
@@ -22,7 +22,7 @@ void f(TreeNode* root)
     f(root->left);
     f(root->right);
 }
-void print(TreeNode* root)
+void print(node* root)
 {
     if(root==NULL)
     {
@@ -37,7 +37,11 @@ void print(TreeNode* root)
 }
 int main()
 {
-    
+  node* root=new node(10);
+  root->left=new node(5);
+  root->right=new node(15);
+  root->left->left=new node(2);
+  root->left->right=new node(7);  
   f(A);
   print(B);
   return 0;
