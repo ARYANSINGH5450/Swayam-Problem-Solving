@@ -5,8 +5,7 @@ class Solution
     if(right==NULL)
     {
         return left;
-    }
-        
+    }
     if(left==NULL)
     {
         return right;
