@@ -12,8 +12,8 @@ bool hasonechild(vector<int>v)
         {
             return false;
         }
-        return true;
     }
+    return true;
 }
 int main()
 {
