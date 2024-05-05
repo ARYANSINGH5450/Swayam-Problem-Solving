@@ -16,7 +16,7 @@ public:
                     dist[v]=dist[u]+1;
                     q.push(v);
                 }
-                else if(v!=u&&dist[v]>=dist[u])
+                else if(dist[v]>=dist[u])
                 {
                     ans=min(ans,dist[u]+dist[v]+1);
                 }
