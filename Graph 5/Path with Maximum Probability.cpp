@@ -14,7 +14,7 @@ public:
         pq.push({1,start});
         while(!pq.empty())
         {
-            pair<double,int>p = pq.top();
+            pair<double,int>p=pq.top();
             pq.pop();
             for(auto i:adj[p.second])
             {
