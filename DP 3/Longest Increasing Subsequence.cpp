@@ -1,18 +1,38 @@
 //Recursion
 class Solution {
  public:
-     int f(vector<int>&nums,int ind,int old)
+     int f(vector<int>&nums,int ind,int prev)
     {
          if(ind>=nums.size()) return 0;
-         int a=f(nums,ind+1,old);
+         int a=f(nums,ind+1,prev);
          int b=1+f(nums,ind+1,ind);
-         if(old==-1||nums[ind]>nums[old]) return max(a,b);
+         if(prev==-1||nums[ind]>nums[prev]) return max(a,b);
          else return a;
      }
      int lengthOfLIS(vector<int>& nums) {
          return f(nums,0,-1);
      }
  };
+
+//Memoization
+class Solution {
+public:
+    int f(int i,int prev,vector<int>& nums,vector<vector<int>>& dp){
+        if(i==nums.size())
+            return 0;
+        if(dp[i][prev+1]!=-1)
+            return dp[i][prev+1];
+        int l=0+f(i+1,prev,nums,dp);
+        if(prev==-1||nums[i]>nums[prev])
+            l=max(l,1+f(i+1,i,nums,dp));
+        return dp[i][prev+1]=l;
+    }
+    int lengthOfLIS(vector<int>& nums) {
+        vector<vector<int>>dp(nums.size(),vector<int>(nums.size()+1,-1));
+        return f(0,-1,nums,dp);
+    }
+};
+
 //Bottom-Up
 class Solution {
 public:
@@ -33,6 +53,7 @@ public:
         return ans;
     }
 };
+
 //Binary Search
 class Solution {
 public:
