@@ -45,14 +45,13 @@ int f(int n,vector<int>coins,int amount,vector<vector<int>>& dp)
 			for(int j=0;j<amount+1;j++)
 			{
 				if(j==0)
-                {
-                    dp[i][j]=0;
-                }
+                                {
+                                     dp[i][j]=0;
+                                }
 				if(i==0)
-                {
-                    dp[i][j]=INT_MAX-1;
-                }
-
+                                {
+                                     dp[i][j]=INT_MAX-1;
+                                }
 			}
 		}
 		for(int i=1;i<n+1;i++)
@@ -60,14 +59,14 @@ int f(int n,vector<int>coins,int amount,vector<vector<int>>& dp)
 			for(int j=1;j<amount+1;j++)
 			{
 				if(coins[i-1]>j)
-                {
+                                {
 					dp[i][j]=0+dp[i-1][j];
-                }
+                                 }
 				else
-                {
-                    dp[i][j]=min(1+dp[i][j-coins[i-1]],dp[i-1][j]);
-                }
-			}
+                                {
+                                        dp[i][j]=min(1+dp[i][j-coins[i-1]],dp[i-1][j]);
+                                }
+	        	}
 		}
 		return dp[n][amount];
 	}
